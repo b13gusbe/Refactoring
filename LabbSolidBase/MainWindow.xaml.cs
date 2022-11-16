@@ -30,7 +30,7 @@ namespace LabbSolidBase
             //This method is run if the selected value of the combo box with sorting algorithms changes.
             //Maybe do something here?
         }
-
+        //Hello test
         private void SortBtn_OnClick(object sender, RoutedEventArgs e)
         {
             SortedList.Items.Clear();
