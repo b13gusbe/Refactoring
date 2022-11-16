@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LabbSolidBase.Interfaces;
 
 namespace LabbSolidBase
 {
@@ -20,6 +21,7 @@ namespace LabbSolidBase
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ISortManager _sortManager;
         public MainWindow()
         {
             InitializeComponent();
@@ -52,16 +54,18 @@ namespace LabbSolidBase
 
                 if (selectedMethod.Equals("Bubble Sort"))
                 {
-                    SortIntArray.BubbleSort(ref intArr);
+                    _sortManager = new BubbleSort();
                 }
                 else if (selectedMethod.Equals("Heap Sort"))
                 {
-                    SortIntArray.HeapSort(ref intArr);
+                    _sortManager = new HeapSort();
                 }
                 else if (selectedMethod.Equals("Quick Sort"))
                 {
-                    SortIntArray.QuickSort(ref intArr, 0, intArr.Length-1);
+                    _sortManager = new QuickSort();
                 }
+
+                _sortManager.ExecuteSort(ref intArr);
 
                 foreach (var item in intArr)
                     SortedList.Items.Add(item);
