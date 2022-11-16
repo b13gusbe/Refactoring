@@ -52,7 +52,15 @@ namespace LabbSolidBase
 
                 if (selectedMethod.Equals("Bubble Sort"))
                 {
-                    BubbleSort(ref intArr);
+                    for (var j = 0; j <= intArr.Length - 2; j++)
+                    {
+                        for (var i = 0; i <= intArr.Length - 2; i++)
+                        {
+                            if (intArr[i] <= intArr[i + 1]) continue;
+
+                            (intArr[i + 1], intArr[i]) = (intArr[i], intArr[i + 1]);
+                        }
+                    }
                 }
                 else if (selectedMethod.Equals("Heap Sort"))
                 {
@@ -88,20 +96,7 @@ namespace LabbSolidBase
             if (left < leftHold - 1) QuickSort(ref data, left, leftHold - 1);
             if (right > rightHold + 1) QuickSort(ref data, rightHold + 1, right);
         }
-
-        static void BubbleSort(ref int[] data)
-        {
-            for (var j = 0; j <= data.Length - 2; j++)
-            {
-                for (var i = 0; i <= data.Length - 2; i++)
-                {
-                    if (data[i] <= data[i + 1]) continue;
-
-                    (data[i + 1], data[i]) = (data[i], data[i + 1]);
-                }
-            }
-        }
-
+        
         static void HeapSort(ref int[] data)
         {
             int heapSize = data.Length;
